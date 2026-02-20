@@ -61,12 +61,12 @@ body {
   background: rgba(248, 247, 244, 0.9);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
-  padding: 20px 40px;
 }
 
 .header-inner {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 20px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1304,13 +1304,6 @@ if (sessionStorage.getItem('fikedispute_auth') === 'true') {
 
 </div>
 
-<!-- ===== DETAIL OVERLAY ===== -->
-<div class="detail-overlay" id="detailOverlay" onclick="closeDetail(event)">
-  <div class="detail-panel" onclick="event.stopPropagation()">
-    <button class="detail-close" onclick="document.getElementById('detailOverlay').classList.remove('open')">✕</button>
-    <div id="detailContent"></div>
-  </div>
-</div>
 
 <script>
 // ===== OWNERSHIP DONUT CHART =====
@@ -1920,6 +1913,14 @@ document.addEventListener('keydown', (e) => {
   }
 });
 </script>
+<!-- ===== DETAIL OVERLAY ===== -->
+<div class="detail-overlay" id="detailOverlay" onclick="closeDetail(event)">
+  <div class="detail-panel" onclick="event.stopPropagation()">
+    <button class="detail-close" onclick="document.getElementById('detailOverlay').classList.remove('open')">✕</button>
+    <div id="detailContent"></div>
+  </div>
+</div>
+
 </div><!-- end mainContent -->
 
 <script>
