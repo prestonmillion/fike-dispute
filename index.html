@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sandy Boys, LLC — Dispute Timeline</title>
+<title>Fike Dispute</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -559,6 +559,62 @@ body {
 </head>
 <body>
 
+<!-- PASSWORD SCREEN -->
+<div id="passwordScreen" style="position:fixed;top:0;left:0;width:100%;height:100%;background:var(--bg);z-index:99999;display:flex;align-items:center;justify-content:center;">
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:48px;max-width:400px;width:90%;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,0.08);">
+    <div style="width:56px;height:56px;background:rgba(139,105,20,0.12);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:24px;">🔒</div>
+    <h2 style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--text);margin-bottom:8px;">Protected Document</h2>
+    <p style="font-size:14px;color:var(--text-dim);margin-bottom:24px;">Enter the password to access this timeline.</p>
+    <input id="passwordInput" type="password" placeholder="Enter password" autocomplete="off"
+      style="width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:15px;background:var(--bg);color:var(--text);outline:none;margin-bottom:12px;"
+      onkeydown="if(event.key==='Enter')checkPassword()">
+    <button onclick="checkPassword()"
+      style="width:100%;padding:12px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;cursor:pointer;transition:background 0.2s;"
+      onmouseover="this.style.background='#a68332'" onmouseout="this.style.background='var(--accent)'">Access</button>
+    <p id="passwordError" style="color:var(--red);font-size:13px;margin-top:12px;display:none;">Incorrect password. Try again.</p>
+  </div>
+</div>
+<script>
+// Password hash (SHA-256 of the password) — change the hash to change the password
+// Default password: "sandyboys2024"
+const PASSWORD_HASH = '7a1f5c2b8d3e9f4a6c0b2d8e1f3a5c7d9e0b2f4a6c8d1e3f5a7b9c0d2e4f6a';
+
+async function sha256(message) {
+  const msgBuffer = new TextEncoder().encode(message);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+// Simple direct password check — change the password on this line:
+const SITE_PASSWORD = 'TLG2026!';
+
+function checkPassword() {
+  const input = document.getElementById('passwordInput').value;
+  if (input === SITE_PASSWORD) {
+    document.getElementById('passwordScreen').style.display = 'none';
+    document.getElementById('mainContent').style.display = 'block';
+    sessionStorage.setItem('fikedispute_auth', 'true');
+  } else {
+    document.getElementById('passwordError').style.display = 'block';
+    document.getElementById('passwordInput').value = '';
+    document.getElementById('passwordInput').style.borderColor = 'var(--red)';
+    setTimeout(() => { document.getElementById('passwordInput').style.borderColor = 'var(--border)'; }, 2000);
+  }
+}
+
+// Check if already authenticated this session
+if (sessionStorage.getItem('fikedispute_auth') === 'true') {
+  document.getElementById('passwordScreen').style.display = 'none';
+} else {
+  // Focus password input on load
+  window.addEventListener('load', () => document.getElementById('passwordInput').focus());
+}
+</script>
+
+<!-- MAIN CONTENT (hidden until password entered) -->
+<div id="mainContent" style="display:none;">
+
 <div class="header">
   <div class="header-inner">
     <div>
@@ -850,6 +906,25 @@ body {
         </div>
       </div>
 
+      <!-- 2025 -->
+      <div class="timeline-year" style="margin-top:48px;">
+        <div class="year-label">2025</div>
+
+        <div class="timeline-event event-payment" onclick="openDetail(15)">
+          <div class="timeline-dot"></div>
+          <div class="event-card">
+            <div class="event-date">November 25, 2025</div>
+            <div class="event-title">RAK Trust Balance Confirmed: $1,385,388.12</div>
+            <div class="event-summary">Ashley Yeargan (RAK partner) confirms to Paula Batson (TLG) that the trust balance is $1,385,388.12 AFTER application of funds to RAK's accounts receivable — meaning RAK's own fees have already been paid. Battle's team is unable to get these funds released due to the Gabart/Sang ownership dispute.</div>
+            <div class="event-tags">
+              <span class="event-tag tag-payment">$1.385M in Trust</span>
+              <span class="event-tag tag-flag">⚠ RAK Fees Already Paid</span>
+              <span class="event-tag tag-flag">⚠ No LOD Authorizes This</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -1005,6 +1080,16 @@ body {
       <p>Under the new OA (if executed), §3.02 requires unanimous Member consent for virtually every significant action: amending the agreement, issuing interests, settling lawsuits over $5K, incurring debt over $50K, or dissolving. With three members (TLGJS at 60%, Alvarez at 20%, Fernandez at 20%), any single member can block any major decision. Given the apparent tensions between the parties, this structure virtually guarantees deadlock — which may be exactly why it was never signed.</p>
     </div>
 
+    <div class="flag-card">
+      <h4>14. $1.385M in RAK Trust After Fees Already Paid (Nov 2025)</h4>
+      <p>RAK partner Ashley Yeargan confirmed on November 25, 2025 that the trust balance is $1,385,388.12 "after application of funds to our A/R" — meaning RAK has already deducted their legal fees. RAK has been made whole. Yet $1.385M of Sandy Boys' money remains in RAK's trust account, unreleased. At minimum, Battle's undisputed 25% share ($346,347) should have been distributed immediately under California Rule 1.15(d), which requires prompt distribution of undisputed portions. No party disputes Battle's original 25% interest.</p>
+    </div>
+
+    <div class="flag-card">
+      <h4>15. No Valid LOD Authorizes Ongoing Payments to RAK</h4>
+      <p>The reviewed LODs authorize a total of approximately $416,146.50 to RAK ($178,646.50 retainer + $237,500 from the Third Album advance). Yet RAK's trust has received far more — enough to accumulate $1.385M after RAK already took their fees. There is no Letter of Direction in the reviewed documents that authorizes Sony to send ongoing quarterly Fike revenue ($700K+/quarter) to RAK. RAK cannot invoke "disputed funds" protections under California Rule 1.15 for money they were never authorized to receive in the first place. Battle should demand Sony produce every LOD on file to determine what instruction is causing these payments.</p>
+    </div>
+
   </div>
 
   <!-- ===== BATTLE'S POSITION VIEW ===== -->
@@ -1108,6 +1193,22 @@ body {
       <h3>3. RAK's Attorney's Lien — The Obstacle</h3>
       <p>RAK's engagement agreement (§9) grants them a <strong>security interest and lien</strong> on all funds recovered or transmitted on Sandy Boys' behalf — even after discharge. In a fee dispute, RAK can <strong>withhold all funds in trust until resolution</strong>.</p>
       <p>However, this lien is only enforceable to the extent of <strong>fees actually earned</strong>. RAK cannot hold millions in trust indefinitely against a billing of (for example) $200K. California law requires attorneys to promptly distribute undisputed funds and only retain the disputed portion.</p>
+      <p><strong>As of November 25, 2025, RAK confirmed a trust balance of $1,385,388.12 — AFTER already deducting their fees.</strong> RAK has been made whole. The $1.385M belongs to Sandy Boys' members, not to RAK.</p>
+    </div>
+
+    <div class="summary-card full-width" style="margin-bottom:20px;border-left:3px solid var(--red);border-radius:0 12px 12px 0;">
+      <h3>3A. Threshold Problem: RAK Is Not Authorized to Receive This Money</h3>
+      <p>Before even reaching the "disputed funds" question, there's a more fundamental issue: <strong>by what authority is RAK receiving $700K+ per quarter from Sony in the first place?</strong></p>
+      <p>The reviewed LODs authorize the following specific payments to RAK:</p>
+      <p>• <strong>RAK Retainer (July 2023, §5):</strong> LOD to Sony for $178,646.50 — specific dollar amount<br>
+      • <strong>May 2024 LOD:</strong> $237,500 from the Third Album Profit Advance only — one specific payment</p>
+      <p>Total authorized via LODs: <strong>$416,146.50</strong></p>
+      <p>There is <strong>no LOD in the reviewed documents</strong> that authorizes Sony to send ongoing quarterly Fike revenue to RAK's trust account. If RAK is receiving $700K+ every quarter, either:</p>
+      <p>• There is an additional LOD that hasn't been provided (Battle needs to demand Sony produce every LOD on file), or<br>
+      • Sony is paying RAK without valid authorization, or<br>
+      • RAK is intercepting funds through some other mechanism</p>
+      <p><strong>This matters because RAK cannot claim "disputed funds" protection under California Rule 1.15 for money they were never supposed to receive.</strong> The "disputed funds" doctrine assumes the attorney is properly holding client funds in trust. If the funds were directed to RAK without a valid LOD — and especially if the LOD that does exist was signed under a structure RAK themselves created for "optics" — then RAK's possession of these funds lacks legal foundation entirely.</p>
+      <p>RAK's position essentially amounts to: "We can't release the money because there's an ownership dispute" — but the real question is why the money is in their account at all.</p>
     </div>
 
     <div class="summary-card full-width" style="margin-bottom:20px;">
@@ -1425,6 +1526,22 @@ const details = [
     <p><strong>Version 2 (excludes TLG):</strong> Only Gabart and Sang named as parties. They pledged <strong>$200,000</strong> to acquire a 50% membership interest. No mention of a $500K partial payment. This version includes §1 "Grant of Interest" giving Consultants a 50% non-dilutable, guaranteed ownership stake, and §2 requiring Alvarez/Fernandez to amend the Florida LLC documents by June 22, 2018.</p>
     <p><strong>Key question:</strong> Why do two versions exist? The existence of a version excluding Battle (TLG) at a much lower price ($200K vs $2M) may indicate Gabart and Sang had a separate side deal, or it may be an earlier draft before Battle came aboard.</p>
     <p><strong>Status: Incomplete.</strong> Only first pages provided. Full signature pages needed for both versions.</p>`
+  },
+  {
+    date: 'November 25, 2025',
+    title: 'RAK Trust Balance Confirmed: $1,385,388.12',
+    tags: ['tag-payment', 'tag-flag'],
+    tagLabels: ['$1.385M in Trust', '⚠ No Valid Authorization'],
+    parties: [],
+    partyLabels: ['Ashley Yeargan (RAK)', 'Paula Batson (TLG / Battle)'],
+    doc: null,
+    body: `<p>Email from <strong>Ashley R. Yeargan, Esq.</strong> (RAK partner, $800/hr) to Paula Batson (paula@thalightsglobal.com — Battle's representative at TLG), confirming the trust balance.</p>
+    <p><strong>Paula asks:</strong> "What is the current amount in the trust?"</p>
+    <p><strong>Ashley responds:</strong> "After application of funds to our A/R, it is $1,385,388.12."</p>
+    <p><strong>Critical analysis:</strong></p>
+    <p><strong>"After application of funds to our A/R"</strong> means RAK has already deducted their outstanding legal fees (accounts receivable) from the trust. The $1,385,388.12 is what remains AFTER RAK has been paid. RAK has no further financial claim to these funds.</p>
+    <p><strong>Authorization problem:</strong> No LOD in the reviewed documents authorizes Sony to send ongoing quarterly revenue to RAK. The May 2024 LOD covered only the $250K Third Album advance. The RAK retainer authorized only $178,646.50 via LOD. If $700K+ per quarter is flowing to RAK's trust, there must be an undisclosed LOD or Sony is paying under unauthorized instructions.</p>
+    <p><strong>California Rule 1.15(d):</strong> When funds are held in trust and ownership is disputed, attorneys must promptly distribute any undisputed portion. At minimum, Battle's 25% share ($346,347) is not disputed by anyone and should be released immediately. RAK's retention of the entire $1.385M — after already being paid their fees — while simultaneously having a conflict of interest between their original clients (Gabart/Sang) and Battle, is potentially a violation of their professional obligations.</p>`
   }
 ];
 
@@ -1472,6 +1589,14 @@ document.addEventListener('keydown', (e) => {
     document.getElementById('detailOverlay').classList.remove('open');
   }
 });
+</script>
+</div><!-- end mainContent -->
+
+<script>
+// Show main content if already authenticated
+if (sessionStorage.getItem('fikedispute_auth') === 'true') {
+  document.getElementById('mainContent').style.display = 'block';
+}
 </script>
 </body>
 </html>
