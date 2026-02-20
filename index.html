@@ -546,21 +546,49 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
-  .header { padding: 16px 20px; }
-  .header-inner { flex-direction: column; gap: 12px; }
-  .main { padding: 20px; }
+  .header { padding: 12px 16px; }
+  .header-inner { flex-direction: column; gap: 10px; align-items: flex-start; }
+  .header h1 { font-size: 22px; }
+  .header-sub { font-size: 12px; }
+  .nav-tabs { flex-wrap: wrap; gap: 6px; }
+  .nav-tab { padding: 6px 10px; font-size: 12px; }
+  .main { padding: 12px; }
   .summary-grid { grid-template-columns: 1fr; }
+  .summary-card { padding: 16px; }
+  .summary-card h3 { font-size: 15px; }
+  .summary-card ul { padding-left: 8px; }
+  .summary-card li { font-size: 12px !important; margin-bottom: 6px !important; }
   .docs-grid { grid-template-columns: 1fr; }
-  .timeline-container { padding-left: 60px; }
-  .year-label { left: -60px; font-size: 20px; }
-  .detail-panel { width: 100vw; }
+  .timeline-container { padding-left: 50px; }
+  .year-label { left: -50px; font-size: 18px; }
+  .event-card { padding: 14px; }
+  .event-title { font-size: 14px; }
+  .event-summary { font-size: 12px; }
+  .event-tag { font-size: 10px; padding: 3px 8px; }
+  .detail-panel { width: 100vw; padding: 20px; }
+  .detail-panel h2 { font-size: 18px; }
+  .flag-card { padding: 16px; }
+  .flag-card h4 { font-size: 14px; }
+  .flag-card p { font-size: 13px; }
+  .party-chip { font-size: 9px; padding: 2px 6px; }
+}
+
+@media (max-width: 480px) {
+  .header { padding: 10px 12px; }
+  .header h1 { font-size: 20px; }
+  .nav-tabs { gap: 4px; }
+  .nav-tab { padding: 5px 8px; font-size: 11px; }
+  .main { padding: 8px; }
+  .summary-card { padding: 14px; }
+  .timeline-container { padding-left: 40px; }
+  .year-label { left: -40px; font-size: 16px; }
 }
 </style>
 </head>
 <body>
 
 <!-- PASSWORD SCREEN -->
-<div id="passwordScreen" style="position:fixed;top:0;left:0;width:100%;height:100%;background:var(--bg);z-index:99999;display:flex;align-items:center;justify-content:center;">
+<div id="passwordScreen" style="position:fixed;top:0;left:0;width:100%;height:100%;background:var(--bg);z-index:99999;display:flex;align-items:center;justify-content:center;padding:16px;">
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:48px;max-width:400px;width:90%;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,0.08);">
     <div style="width:56px;height:56px;background:rgba(139,105,20,0.12);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:24px;">🔒</div>
     <h2 style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--text);margin-bottom:8px;">Protected Document</h2>
@@ -618,7 +646,7 @@ if (sessionStorage.getItem('fikedispute_auth') === 'true') {
 <div class="header">
   <div class="header-inner">
     <div>
-      <h1>Sandy Boys, LLC</h1>
+      <h1>Fike Dispute</h1>
       <div class="header-sub">Dispute Timeline &amp; Document Map</div>
     </div>
     <div class="nav-tabs">
@@ -640,33 +668,62 @@ if (sessionStorage.getItem('fikedispute_auth') === 'true') {
 
       <div class="summary-card full-width">
         <h3><span class="icon" style="background:rgba(201,165,90,0.15);">⚡</span> Executive Summary</h3>
-        <p>Sandy Boys, LLC is a Delaware LLC formed July 30, 2018 (succeeding a prior Florida LLC) to hold the rights to recording artist <strong>Dominic Fike</strong>'s services and recordings under deals with <strong>Sony Music / Columbia Records</strong>. The original Fike deal was discovered by Daniel Alvarez and David Fernandez, who then sold 60% to Herbert "Dooney" Battle (25%), Stanley Gabart (17.5%), and Javier Sang (17.5%) for $2M funded from the Sony advance. Battle served as the "key person" controlling label relationships.</p>
+        <p>Sandy Boys, LLC was originally a <strong>Florida LLC formed by Daniel Alvarez and David Fernandez</strong> to hold the rights to recording artist <strong>Dominic Fike</strong>'s services and recordings. After Alvarez and Fernandez signed Fike, they brought in Herbert "Dooney" Battle (25%), Stanley Gabart (17.5%), and Javier Sang (17.5%) — who purchased 60% for $2M funded from the Sony advance that Battle secured. The entity was later redomiciled as a Delaware LLC on July 30, 2018, with deals executed through <strong>Sony Music / Columbia Records</strong>. Battle served as the "key person" controlling label relationships.</p>
       <p style="margin-top:10px;">The core dispute: <strong>Gabart and Sang claim they purchased Alvarez and Fernandez's 40% before Battle did</strong>, but have produced no documentation. Battle has a signed, notarized Securities Purchase Agreement, wire transfer proof, and seller acknowledgment texts. Meanwhile, the litigation firm <strong>Russ, August & Kabat</strong> (originally Gabart/Sang's attorneys) is holding $700K+/quarter in trust from Fike revenue and won't release Battle's share due to the competing ownership claims — creating a direct conflict of interest.</p>
       </div>
 
-      <div class="summary-card">
+      <div class="summary-card" style="min-width:0;">
         <h3><span class="icon" style="background:rgba(92,166,106,0.15);">👥</span> Key Parties</h3>
-        <ul>
-          <li><span class="party-chip party-battle">BATTLE</span> <strong>Herbert "Dooney" Battle</strong> — Manager, sole member on OA, controls Tha Lights Global, Inc.</li>
-          <li><span class="party-chip party-alvarez">ALVAREZ</span> <strong>Daniel Alvarez</strong> — 20% economic interest (original LOD), sold to TLG March 2023</li>
-          <li><span class="party-chip party-fernandez">FERNANDEZ</span> <strong>David Fernandez</strong> — 20% economic interest (original LOD), sold to TLG March 2023</li>
-          <li><span class="party-chip party-gabart">GABART</span> <strong>Stanley Gabart</strong> — 17.5% economic interest (original LOD)</li>
-          <li><span class="party-chip party-sang">SANG</span> <strong>Javier Sang</strong> — 17.5% economic interest (original LOD)</li>
-          <li><span class="party-chip party-tlg">TLG</span> <strong>Tha Lights Global, Inc.</strong> — Battle's company, 25% interest (original LOD), bought out Alvarez & Fernandez per SPA</li>
-          <li><span class="party-chip party-tlg">TLGJS</span> <strong>TLGJS, LLC</strong> — Battle (41⅔%), Sang (29⅙%), Gabart (29⅙%). Became Manager of Sandy Boys; intended 60% owner. Distinct from TLG.</li>
+        <ul style="font-size:13px;">
+          <li style="margin-bottom:8px;"><span class="party-chip party-battle">BATTLE</span> <strong>Herbert "Dooney" Battle</strong> — Sole member & Manager on the Delaware OA; controls TLG</li>
+          <li style="margin-bottom:8px;"><span class="party-chip party-tlg">TLG</span> <strong>Tha Lights Global, Inc.</strong> — Battle's entity; 25% economic interest; buyer in SPA</li>
+          <li style="margin-bottom:8px;"><span class="party-chip party-alvarez">ALVAREZ</span> <strong>Daniel Alvarez</strong> — Co-founder; 20% economic interest; sold to TLG Mar 2023</li>
+          <li style="margin-bottom:8px;"><span class="party-chip party-fernandez">FERNANDEZ</span> <strong>David Fernandez</strong> — Co-founder; 20% economic interest; sold to TLG Mar 2023</li>
+          <li style="margin-bottom:8px;"><span class="party-chip party-gabart">GABART</span> <strong>Stanley Gabart</strong> — 17.5% economic interest</li>
+          <li style="margin-bottom:8px;"><span class="party-chip party-sang">SANG</span> <strong>Javier Sang</strong> — 17.5% economic interest</li>
+          <li style="margin-bottom:8px;"><span class="party-chip party-tlg">TLGJS</span> <strong>TLGJS, LLC</strong> — Battle 41⅔%, Sang 29⅙%, Gabart 29⅙%; created for litigation optics</li>
         </ul>
       </div>
 
-      <div class="summary-card">
-        <h3><span class="icon" style="background:rgba(201,165,90,0.15);">💰</span> Original Economic Split (Aug 2018 LOD)</h3>
-        <div class="ownership-bar">
-          <div style="width:25%;background:var(--green);">TLG 25%</div>
-          <div style="width:20%;background:var(--red);">DA 20%</div>
-          <div style="width:20%;background:var(--orange);">DF 20%</div>
-          <div style="width:17.5%;background:var(--blue);">SG 17.5%</div>
-          <div style="width:17.5%;background:var(--purple);">JS 17.5%</div>
+      <div class="summary-card" style="min-width:0;">
+        <h3><span class="icon" style="background:rgba(201,165,90,0.15);">💰</span> Ownership Evolution</h3>
+        <div style="background:var(--surface-raised);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+          <div>
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;">Catalog Value</div>
+            <div style="display:flex;align-items:center;gap:4px;margin-top:2px;">
+              <span style="font-family:'DM Serif Display',serif;font-size:20px;color:var(--accent);">$</span>
+              <input id="totalValueInput" type="text" value="35,000,000"
+                style="font-family:'DM Serif Display',serif;font-size:20px;color:var(--accent);background:transparent;border:none;border-bottom:2px dashed var(--border-accent);outline:none;width:140px;padding:0 0 2px 0;"
+                oninput="updateValuation()" onfocus="this.style.borderBottomColor='var(--accent)'" onblur="this.style.borderBottomColor='var(--border-accent)'">
+            </div>
+          </div>
+          <div style="text-align:right;">
+            <div id="perPctLabel" style="font-size:13px;color:var(--text-dim);font-weight:600;">1% = $350,000</div>
+            <div style="font-size:10px;color:var(--text-muted);margin-top:2px;">Adjust value to recalculate</div>
+          </div>
         </div>
-        <p style="margin-top:12px;font-size:13px;color:var(--text-muted);">Initial $1.1M advance split 50/50 between Alvarez &amp; Fernandez only. TLG, Gabart, and Sang participate from second tranche forward.</p>
+        <div style="display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;">
+          <button class="split-tab active" onclick="showSplit(0, this)" style="padding:6px 12px;border:1px solid var(--border);border-radius:8px;background:var(--accent);color:#fff;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;">Original (FL)</button>
+          <button class="split-tab" onclick="showSplit(1, this)" style="padding:6px 12px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;">Delaware LLC</button>
+          <button class="split-tab" onclick="showSplit(2, this)" style="padding:6px 12px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;">Sony Deal Split</button>
+          <button class="split-tab" onclick="showSplit(3, this)" style="padding:6px 12px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;">Battle Buyout</button>
+          <button class="split-tab" onclick="showSplit(4, this)" style="padding:6px 12px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;">G/S Claim</button>
+          <button class="split-tab" onclick="showSplit(5, this)" style="padding:6px 12px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;">G/S Proposal</button>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;justify-content:center;">
+          <div style="position:relative;width:200px;height:200px;flex-shrink:0;">
+            <canvas id="ownershipChart" width="200" height="200"></canvas>
+            <div id="chartCenter" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;">
+              <div id="chartLabel" style="font-family:'DM Serif Display',serif;font-size:12px;color:var(--text);">Original</div>
+              <div id="chartSublabel" style="font-size:9px;color:var(--text-muted);margin-top:2px;">Jan 2018</div>
+            </div>
+          </div>
+          <div style="flex:1;min-width:140px;">
+            <div id="chartLegend"></div>
+          </div>
+        </div>
+        <div id="chartValuation" style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;"></div>
+        <p id="chartNote" style="margin-top:14px;font-size:12px;color:var(--text-muted);line-height:1.5;"></p>
       </div>
 
       <div class="summary-card full-width">
@@ -675,7 +732,7 @@ if (sessionStorage.getItem('fikedispute_auth') === 'true') {
           <li><strong>Ziffren Brittenham LLP</strong> (David Byrnes) — Original counsel, prepared 2018 LOD</li>
           <li><strong>Ungerlaw, PC</strong> — Prepared the Operating Agreement (represented the Company only)</li>
           <li><strong>Sedlmayr & Associates, P.C.</strong> (Theo Sedlmayr) — Retained Feb 2023 as lead transactional entertainment counsel; 5% commission</li>
-          <li><strong>Russ, August & Kabat, LLP</strong> (Stanton "Larry" Stein) — Litigation counsel for Sandy Boys v. Fike AAA arbitration; originally engaged by Gabart/Sang May 2021; $1,150/hr lead rate; $178K+ retainer</li>
+          <li><strong>Russ, August & Kabat, LLP</strong> (Stanton "Larry" Stein) — Litigation counsel for Sandy Boys v. Fike AAA arbitration; originally engaged by Gabart/Sang May 2021; $1,150/hr lead rate; holding $1,385,388.12 in trust after fees</li>
           <li><strong>Todd Rubenstein Law / Todd Rubenstein, Esq.</strong> — Counsel for TLG in the 2018 LOD</li>
         </ul>
       </div>
@@ -1087,7 +1144,7 @@ if (sessionStorage.getItem('fikedispute_auth') === 'true') {
 
     <div class="flag-card">
       <h4>15. No Valid LOD Authorizes Ongoing Payments to RAK</h4>
-      <p>The reviewed LODs authorize a total of approximately $416,146.50 to RAK ($178,646.50 retainer + $237,500 from the Third Album advance). Yet RAK's trust has received far more — enough to accumulate $1.385M after RAK already took their fees. There is no Letter of Direction in the reviewed documents that authorizes Sony to send ongoing quarterly Fike revenue ($700K+/quarter) to RAK. RAK cannot invoke "disputed funds" protections under California Rule 1.15 for money they were never authorized to receive in the first place. Battle should demand Sony produce every LOD on file to determine what instruction is causing these payments.</p>
+      <p>The reviewed LODs authorize a total of approximately $416,146.50 to RAK ($178,646.50 retainer + $237,500 from the Third Album advance). Yet RAK's trust has received far more — enough to accumulate $1.385M after RAK already took their fees. There is no Letter of Direction in the reviewed documents that authorizes Sony to send ongoing quarterly Fike revenue ($700K+/quarter) to RAK. RAK cannot invoke "disputed funds" protections under California Rule 1.15 for money they were never authorized to receive in the first place. Sony should produce every LOD on file to determine what instruction is causing these payments.</p>
     </div>
 
   </div>
@@ -1172,7 +1229,7 @@ if (sessionStorage.getItem('fikedispute_auth') === 'true') {
 
     <div class="summary-card full-width" style="border-left:3px solid var(--blue);border-radius:0 12px 12px 0;margin-bottom:24px;">
       <h3><span class="icon" style="background:rgba(43,94,167,0.12);">⚖️</span> Legal Analysis — Battle's Rights and Options</h3>
-      <p>The following analysis is based on the documents reviewed and is not legal advice. Battle should consult with independent counsel.</p>
+      <p>Analysis based on all documents reviewed to date.</p>
     </div>
 
     <div class="summary-card full-width" style="margin-bottom:20px;">
@@ -1204,7 +1261,7 @@ if (sessionStorage.getItem('fikedispute_auth') === 'true') {
       • <strong>May 2024 LOD:</strong> $237,500 from the Third Album Profit Advance only — one specific payment</p>
       <p>Total authorized via LODs: <strong>$416,146.50</strong></p>
       <p>There is <strong>no LOD in the reviewed documents</strong> that authorizes Sony to send ongoing quarterly Fike revenue to RAK's trust account. If RAK is receiving $700K+ every quarter, either:</p>
-      <p>• There is an additional LOD that hasn't been provided (Battle needs to demand Sony produce every LOD on file), or<br>
+      <p>• There is an additional LOD that hasn't been provided (Sony should be asked to produce every LOD on file), or<br>
       • Sony is paying RAK without valid authorization, or<br>
       • RAK is intercepting funds through some other mechanism</p>
       <p><strong>This matters because RAK cannot claim "disputed funds" protection under California Rule 1.15 for money they were never supposed to receive.</strong> The "disputed funds" doctrine assumes the attorney is properly holding client funds in trust. If the funds were directed to RAK without a valid LOD — and especially if the LOD that does exist was signed under a structure RAK themselves created for "optics" — then RAK's possession of these funds lacks legal foundation entirely.</p>
@@ -1214,7 +1271,7 @@ if (sessionStorage.getItem('fikedispute_auth') === 'true') {
     <div class="summary-card full-width" style="margin-bottom:20px;">
       <h3>4. The Conflict of Interest</h3>
       <p>RAK's original clients were <strong>Gabart and Sang</strong> (May 2021). They then became counsel for <strong>Sandy Boys as a whole</strong> (July 2023). Now Gabart/Sang and Battle are adverse on the ownership question. RAK cannot represent the LLC while simultaneously protecting their original clients' interests against another member — this violates <strong>California Rules of Professional Conduct Rule 1.7</strong>.</p>
-      <p>Battle should demand RAK's withdrawal due to this conflict or file a complaint with the California State Bar.</p>
+      <p>RAK's withdrawal should be demanded due to this conflict, or a complaint filed with the California State Bar.</p>
     </div>
 
     <div class="summary-card full-width" style="margin-bottom:20px;">
@@ -1230,7 +1287,7 @@ if (sessionStorage.getItem('fikedispute_auth') === 'true') {
 
     <div class="summary-card full-width" style="margin-bottom:20px;">
       <h3>6. Outstanding Documents Needed</h3>
-      <p>To strengthen Battle's position, the following documents are needed:</p>
+      <p>The following documents are needed to complete the analysis:</p>
       <p>• <strong>Full Binding LOI (both versions) with signature pages</strong> — critical to understanding competing claims<br>
       • <strong>Austin Rosen email chain</strong> — proves Gabart/Sang's bad faith in undercutting Battle<br>
       • <strong>Draft Rosen purchase agreement</strong> for Battle's 25% at $750K — establishes market value<br>
@@ -1256,6 +1313,279 @@ if (sessionStorage.getItem('fikedispute_auth') === 'true') {
 </div>
 
 <script>
+// ===== OWNERSHIP DONUT CHART =====
+const splits = [
+  {
+    label: 'Original', sublabel: 'Florida LLC — Jan 2018',
+    note: 'Alvarez and Fernandez discover and sign Dominic Fike through Sandy Boys, LLC — a Florida LLC they formed. They own 100% of the entity and the Fike deal.',
+    segments: [
+      { name: 'Daniel Alvarez', pct: 50, color: '#c0392b' },
+      { name: 'David Fernandez', pct: 50, color: '#d4762c' }
+    ]
+  },
+  {
+    label: 'Delaware LLC', sublabel: 'Jul 30, 2018 — Legal Owner',
+    note: 'Battle forms a NEW Delaware Sandy Boys, LLC — a separate entity from the Florida LLC. The signed Operating Agreement names Battle as the sole Member and Manager. No other parties are listed as members. However, the economic split remains the same — Battle 25%, Gabart 17.5%, Sang 17.5%, Alvarez 20%, Fernandez 20%. The other parties have economic interests via the LOD but NO legal membership in the Delaware entity.',
+    segments: [
+      { name: 'TLG (Battle) — 100% Legal Owner', pct: 25, color: '#2d7a3e' },
+      { name: 'Daniel Alvarez — Economic Only', pct: 20, color: '#c0392b' },
+      { name: 'David Fernandez — Economic Only', pct: 20, color: '#d4762c' },
+      { name: 'Stanley Gabart — Economic Only', pct: 17.5, color: '#2b5ea7' },
+      { name: 'Javier Sang — Economic Only', pct: 17.5, color: '#6b4fa0' }
+    ]
+  },
+  {
+    label: 'Sony Deal Split', sublabel: 'Aug 2, 2018 — Payment Split',
+    note: 'While Battle is the sole legal member of the Delaware LLC, the Letter of Direction to Sony establishes a five-way payment split for all Fike revenue. This LOD controls how Sony distributes money — but it does not grant membership interests in the Delaware entity. The legal ownership (100% Battle) and the payment arrangement (five-way split) are separate.',
+    segments: [
+      { name: 'TLG (Battle)', pct: 25, color: '#2d7a3e' },
+      { name: 'Daniel Alvarez', pct: 20, color: '#c0392b' },
+      { name: 'David Fernandez', pct: 20, color: '#d4762c' },
+      { name: 'Stanley Gabart', pct: 17.5, color: '#2b5ea7' },
+      { name: 'Javier Sang', pct: 17.5, color: '#6b4fa0' }
+    ]
+  },
+  {
+    label: "Battle's Buyout", sublabel: 'Mar 2023 (Battle\'s Position)',
+    note: 'Battle (via TLG) executes the Securities Purchase Agreement to buy Alvarez and Fernandez\'s 40% economic interest for $600K. Supported by signed SPA, $300K wire transfer, and Fernandez text acknowledgment. Combined with his status as sole legal member of the Delaware LLC, Battle\'s position is that he now controls 65% of the economics and 100% of the legal entity.',
+    segments: [
+      { name: 'TLG (Battle) — Original 25%', pct: 25, color: '#2d7a3e' },
+      { name: 'TLG (Battle) — Acquired 40%', pct: 40, color: '#4aa85c' },
+      { name: 'Stanley Gabart', pct: 17.5, color: '#2b5ea7' },
+      { name: 'Javier Sang', pct: 17.5, color: '#6b4fa0' }
+    ]
+  },
+  {
+    label: "Gabart/Sang Claim", sublabel: 'Disputed — No Documentation',
+    note: 'Gabart and Sang claim they purchased Alvarez and Fernandez\'s 40% before Battle did. No purchase agreement, assignment, amended OA, or Manager consent has been produced. They were never admitted as members of the Delaware LLC under the signed OA. The only money trail is a $500K payment that Battle says was repayment of a personal loan. If their claim were valid, they would control 75% of the economics.',
+    segments: [
+      { name: 'TLG (Battle)', pct: 25, color: '#2d7a3e' },
+      { name: 'Stanley Gabart — Original 17.5%', pct: 17.5, color: '#2b5ea7' },
+      { name: 'Stanley Gabart — Claimed 20%', pct: 20, color: '#4a8fd4' },
+      { name: 'Javier Sang — Original 17.5%', pct: 17.5, color: '#6b4fa0' },
+      { name: 'Javier Sang — Claimed 20%', pct: 20, color: '#9678c9' }
+    ]
+  },
+  {
+    label: "G/S Proposal", sublabel: 'Disputed — Battle at 30%',
+    note: 'Gabart and Sang have proposed a structure where Battle receives only 30% (his original 25% plus 5%) while they split the remaining 70% between them. Each claims their original 17.5% PLUS an additional 17.5% from the 40% they say they bought, for 35% each. This would reduce Battle from majority control to a minority position despite him being the sole legal member of the Delaware LLC, the person who secured the Sony deal, and the party with documented proof of purchasing the 40%. No legal basis for this proposal has been provided.',
+    segments: [
+      { name: 'TLG (Battle) — Original 25%', pct: 25, color: '#2d7a3e' },
+      { name: 'TLG (Battle) — Offered 5%', pct: 5, color: '#4aa85c' },
+      { name: 'Stanley Gabart — Original 17.5%', pct: 17.5, color: '#2b5ea7' },
+      { name: 'Stanley Gabart — Claimed 17.5%', pct: 17.5, color: '#4a8fd4' },
+      { name: 'Javier Sang — Original 17.5%', pct: 17.5, color: '#6b4fa0' },
+      { name: 'Javier Sang — Claimed 17.5%', pct: 17.5, color: '#9678c9' }
+    ]
+  }
+];
+
+let currentSplit = 0;
+
+function drawDonut(idx) {
+  const canvas = document.getElementById('ownershipChart');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = 200 * dpr;
+  canvas.height = 200 * dpr;
+  canvas.style.width = '200px';
+  canvas.style.height = '200px';
+  ctx.scale(dpr, dpr);
+
+  const cx = 100, cy = 100, outerR = 94, innerR = 56;
+  const data = splits[idx];
+  const segs = data.segments.filter(s => !s.skip && s.pct > 0);
+  const total = segs.reduce((a, s) => a + s.pct, 0);
+
+  ctx.clearRect(0, 0, 200, 200);
+
+  let startAngle = -Math.PI / 2;
+  segs.forEach((seg, i) => {
+    const sweep = (seg.pct / total) * Math.PI * 2;
+    const gap = 0.02;
+
+    ctx.beginPath();
+    ctx.arc(cx, cy, outerR, startAngle + gap, startAngle + sweep - gap);
+    ctx.arc(cx, cy, innerR, startAngle + sweep - gap, startAngle + gap, true);
+    ctx.closePath();
+    ctx.fillStyle = seg.color;
+    ctx.fill();
+
+    // Label on segment if big enough
+    if (seg.pct >= 5) {
+      const midAngle = startAngle + sweep / 2;
+      const labelR = (outerR + innerR) / 2;
+      const lx = cx + Math.cos(midAngle) * labelR;
+      const ly = cy + Math.sin(midAngle) * labelR;
+      ctx.fillStyle = '#fff';
+      const fontSize = seg.pct < 10 ? 10 : 13;
+      ctx.font = `600 ${fontSize}px "DM Sans", sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(seg.pct + '%', lx, ly);
+    }
+
+    startAngle += sweep;
+  });
+
+  // Center label
+  document.getElementById('chartLabel').textContent = data.label;
+  document.getElementById('chartSublabel').textContent = data.sublabel;
+
+  // Legend with dollar values
+  const legend = document.getElementById('chartLegend');
+  const totalVal = getTotalValue();
+  const perPct = totalVal / 100;
+  legend.innerHTML = segs.map(s => {
+    const valPct = s.econPct !== undefined ? s.econPct : s.pct;
+    const econNote = s.econPct !== undefined ? ` (economic: ${s.econPct}%)` : '';
+    return `
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+      <div style="width:12px;height:12px;border-radius:3px;background:${s.color};flex-shrink:0;"></div>
+      <div style="flex:1;min-width:0;">
+        <div style="font-size:13px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${s.name}</div>
+        <div style="font-size:11px;color:var(--text-muted);">${s.pct}% legal${econNote} · <strong style="color:var(--accent);">${formatDollar(valPct * perPct)}</strong></div>
+      </div>
+    </div>
+  `}).join('');
+
+  // Valuation comparison bars
+  const valDiv = document.getElementById('chartValuation');
+  const partyTotals = {};
+  segs.forEach(s => {
+    const base = s.name.replace(/ — .+$/, '');
+    const valPct = s.econPct !== undefined ? s.econPct : s.pct;
+    if (!partyTotals[base]) partyTotals[base] = { pct: 0, color: s.color };
+    partyTotals[base].pct += valPct;
+  });
+  valDiv.innerHTML = Object.entries(partyTotals).map(([name, d]) => `
+    <div style="background:var(--surface-raised);border:1px solid var(--border);border-radius:8px;padding:8px 12px;flex:1;min-width:100px;text-align:center;">
+      <div style="font-size:11px;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${name}</div>
+      <div style="font-family:'DM Serif Display',serif;font-size:16px;color:${d.color};margin-top:2px;">${formatDollar(d.pct * perPct)}</div>
+      <div style="font-size:10px;color:var(--text-muted);">${d.pct}%</div>
+    </div>
+  `).join('');
+
+  // Show combined Gabart/Sang total on G/S Claim and G/S Proposal tabs
+  if (idx === 4 || idx === 5) {
+    let gPct = 0, sPct = 0, bPct = 0;
+    segs.forEach(s => {
+      if (s.name.includes('Gabart')) gPct += s.pct;
+      else if (s.name.includes('Sang')) sPct += s.pct;
+      else bPct += s.pct;
+    });
+    const combinedPct = gPct + sPct;
+    valDiv.innerHTML += `
+      <div style="width:100%;margin-top:10px;">
+        <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:8px;">
+          <div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid var(--border-accent);"></div>
+          <span style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;">Combined Claim</span>
+          <div style="width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid var(--border-accent);"></div>
+        </div>
+        <div style="display:flex;gap:8px;">
+          <div style="flex:1;background:var(--surface-raised);border:2px solid #4a4fa0;border-radius:10px;padding:14px;text-align:center;">
+            <div style="font-size:12px;color:var(--text-muted);">Gabart & Sang Combined</div>
+            <div style="font-family:'DM Serif Display',serif;font-size:24px;color:#4a4fa0;margin-top:4px;">${formatDollar(combinedPct * perPct)}</div>
+            <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">${combinedPct}% of catalog</div>
+          </div>
+          <div style="display:flex;align-items:center;font-size:18px;color:var(--text-muted);padding:0 4px;">vs</div>
+          <div style="flex:1;background:var(--surface-raised);border:2px solid #2d7a3e;border-radius:10px;padding:14px;text-align:center;">
+            <div style="font-size:12px;color:var(--text-muted);">Battle</div>
+            <div style="font-family:'DM Serif Display',serif;font-size:24px;color:#2d7a3e;margin-top:4px;">${formatDollar(bPct * perPct)}</div>
+            <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">${bPct}% of catalog</div>
+          </div>
+        </div>
+      </div>`;
+
+    // Show what Battle gives up on G/S Proposal tab
+    if (idx === 5) {
+      const rightfulPct = 65; // Battle's 25% + 40% buyout
+      const proposedPct = bPct;
+      const lossPct = rightfulPct - proposedPct;
+      const lossVal = lossPct * perPct;
+      valDiv.innerHTML += `
+        <div style="width:100%;margin-top:12px;background:var(--surface-raised);border:2px solid var(--red);border-radius:10px;padding:16px;text-align:center;">
+          <div style="font-size:11px;color:var(--red);text-transform:uppercase;letter-spacing:0.5px;font-weight:700;">If Battle Accepts This Proposal</div>
+          <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-top:10px;flex-wrap:wrap;">
+            <div>
+              <div style="font-size:12px;color:var(--text-muted);">Rightful Share (w/ buyout)</div>
+              <div style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--text);margin-top:2px;">${formatDollar(rightfulPct * perPct)}</div>
+              <div style="font-size:11px;color:var(--text-muted);">${rightfulPct}%</div>
+            </div>
+            <div style="font-size:24px;color:var(--text-muted);">→</div>
+            <div>
+              <div style="font-size:12px;color:var(--text-muted);">Proposed Share</div>
+              <div style="font-family:'DM Serif Display',serif;font-size:22px;color:var(--text);margin-top:2px;">${formatDollar(proposedPct * perPct)}</div>
+              <div style="font-size:11px;color:var(--text-muted);">${proposedPct}%</div>
+            </div>
+            <div style="font-size:24px;color:var(--text-muted);">=</div>
+            <div>
+              <div style="font-size:12px;color:var(--red);font-weight:700;">GIVES UP</div>
+              <div style="font-family:'DM Serif Display',serif;font-size:28px;color:var(--red);margin-top:2px;">−${formatDollar(lossVal)}</div>
+              <div style="font-size:11px;color:var(--text-muted);">${lossPct}% of catalog</div>
+            </div>
+          </div>
+        </div>`;
+    }
+  }
+
+  // Update per-percent label
+  document.getElementById('perPctLabel').textContent = '1% = ' + formatDollar(perPct);
+}
+
+function getTotalValue() {
+  const input = document.getElementById('totalValueInput');
+  if (!input) return 35000000;
+  const raw = input.value.replace(/[^0-9.]/g, '');
+  const val = parseFloat(raw);
+  return isNaN(val) ? 35000000 : val;
+}
+
+function formatDollar(amount) {
+  if (amount >= 1000000) {
+    return '$' + (amount / 1000000).toFixed(1) + 'M';
+  } else if (amount >= 1000) {
+    return '$' + (amount / 1000).toFixed(0) + 'K';
+  }
+  return '$' + amount.toFixed(0);
+}
+
+function updateValuation() {
+  // Format the input with commas
+  const input = document.getElementById('totalValueInput');
+  const raw = input.value.replace(/[^0-9]/g, '');
+  const num = parseInt(raw);
+  if (!isNaN(num)) {
+    const cursorPos = input.selectionStart;
+    const oldLen = input.value.length;
+    input.value = num.toLocaleString('en-US');
+    const newLen = input.value.length;
+    input.setSelectionRange(cursorPos + (newLen - oldLen), cursorPos + (newLen - oldLen));
+  }
+  // Re-render current split with new value
+  drawDonut(currentSplit);
+
+  // Note
+  document.getElementById('chartNote').textContent = data.note;
+}
+
+function showSplit(idx, btn) {
+  currentSplit = idx;
+  document.querySelectorAll('.split-tab').forEach(t => {
+    t.style.background = 'var(--surface)';
+    t.style.color = 'var(--text)';
+    t.classList.remove('active');
+  });
+  btn.style.background = 'var(--accent)';
+  btn.style.color = '#fff';
+  btn.classList.add('active');
+  drawDonut(idx);
+}
+
+// Draw initial chart when page loads
+window.addEventListener('load', () => drawDonut(0));
+
 // View switching
 function switchView(viewId) {
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
